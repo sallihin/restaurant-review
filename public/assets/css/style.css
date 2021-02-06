@@ -40,13 +40,70 @@ h4 {
     font-weight: 800; 
 
 }
-
-nav#mainNav { 
+/* Bootstrap Overrides */
+nav { 
     background: #D6006B;
 }
 
 .stars { 
     margin: 5px 0; 
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #FFFFFF;
+}
+
+.dropdown { 
+    text-align: left; 
+    margin: 10px 0 10px 10px;
+}
+
+.dropdown button { 
+    background-color: transparent;
+    border: none; 
+    color: #FFFFFF;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.dropdown button:hover,
+.dropdown button:focus,
+.dropdown button:active { 
+    background: none; 
+    border: none;
+    box-shadow: none;
+    outline: none !important;
+}
+
+#searchinput { 
+    font-size: 23px; 
+    color: #6A6A6A; 
+    border-radius: 50px;
+    padding: 19px 40px;
+}
+
+#signup { 
+    background: #EAEAEA;
+    border-radius: 30px;
+    color: #B50038; 
+    font-weight: 700; 
+    padding: 8px 20px;
+    margin-left: 10px;
+}
+
+#signup:hover { 
+    background: #B50038; 
+    color: #FFFFFF;
+}
+
+#home nav { 
+    background: transparent;
+}
+
+#home header { 
+    background: url(../images/masthead-banner@2x.png);
+    background-size: cover;
 }
 
 #home #hbb,
@@ -72,6 +129,33 @@ nav#mainNav {
 #home #hbb .row,
 #home #desserts .row { 
     overflow: hidden;
+}
+footer { 
+    background: #F2F2F2; 
+}
+
+footer .container { 
+    background: url(../images/footer-logo.png) no-repeat right 30px center;
+}
+
+footer ul { 
+    margin-bottom: 0;
+}
+
+footer ul li {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+footer ul li a { 
+    font-size: 14px; 
+    color: #6A6A6A;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    color: #D6006B; 
+    text-decoration: underline;
 }
 
 @media (min-width: 1200px) {

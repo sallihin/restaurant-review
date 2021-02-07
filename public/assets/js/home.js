@@ -1,29 +1,44 @@
+$(document).ready(function(){
 
-let hbbScrollPosition = 0; 
+    $('.hbb-slider').slick({
+        dots: false,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        accessibility: false,
+        prevArrow: $('#hbb .scroll-left'),
+        nextArrow: $('#hbb .scroll-right'),
+        responsive: [
+ 
+        {
+            breakpoint: 560,
+            settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+            }
+        }
+        ]
+    });
 
-let colWidth = () => {
-    return document.querySelector('#hbb .col').clientWidth;
-} 
+    $('.dessert-slider').slick({
+        dots: false,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        accessibility: false,
+        prevArrow: $('#desserts .scroll-left'),
+        nextArrow: $('#desserts .scroll-right'),
+        responsive: [
+        {
+            breakpoint: 560,
+            settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+            }
+        }
+        ]
+    });
 
-const moveRight = () => { 
-    hbbScrollPosition =  $('#hbb .row').scrollLeft();
-    $('#hbb .row').animate( { scrollLeft: hbbScrollPosition + colWidth() }, 500); 
-};
-
-const moveLeft = () => { 
-    hbbScrollPosition =  $('#hbb .row').scrollLeft();
-    $('#hbb .row').animate( { scrollLeft: (hbbScrollPosition - colWidth()) }, 500); 
-};
-    
-let dessertScrollPosition = 0; 
-
-const dessertMoveRight = () => { 
-    dessertScrollPosition =  $('#desserts .row').scrollLeft();
-    $('#desserts .row').animate( { scrollLeft: dessertScrollPosition + colWidth() }, 500); 
-};
-
-const dessertMoveLeft = () => { 
-    dessertScrollPosition =  $('#desserts .row').scrollLeft();
-    $('#desserts .row').animate( { scrollLeft: (dessertScrollPosition - colWidth()) }, 500); 
-};
-
+});

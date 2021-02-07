@@ -17,17 +17,21 @@ Date: 31 Jan 2021
     src: url(../fonts/avenir-bold.ttf) format('ttf'); 
     font-weight: 800; 
 }
+
 html { 
     scroll-behavior: smooth; 
 }
+
 h1, h2, h3, h4, h5, p { 
     font-family: Avenir, Arial, Helvetica, sans-serif;
 }
+
 h1 { 
     font-size: 16px; 
     font-weight: 300;
     color: #BABABA;
 }
+
 h2 { 
     font-size: 30px;
     font-weight: 300;
@@ -35,22 +39,74 @@ h2 {
     color: #2B2B2B;
     margin: 55px 0 20px;
 }
+
+h3 {
+    font-size: 20px; 
+    font-weight: 300;
+}
+
 h4 { 
     font-size: 14px; 
     font-weight: 800; 
 
 }
+
 /* Bootstrap Overrides */
 nav { 
     background: #D6006B;
 }
 
+.card { 
+    border-radius: 0.5rem; 
+    overflow: hidden;
+}
+
 .stars { 
     margin: 5px 0; 
+    display: inline-block;
+}
+
+.navbar-dark .navbar-nav {
+    flex-direction: row;
 }
 
 .navbar-dark .navbar-nav .nav-link {
     color: #FFFFFF;
+}
+
+.navbar-dark .navbar-toggler {
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+.search { 
+    position: relative
+}
+
+.search input[type=submit] {
+    position: absolute;
+    top: 5px;
+    right: 25px;
+    background: url(../images/search-icon@2x.png);
+    background-size: cover;
+    border: none;
+    height: 60px;
+    width: 60px;
+}
+
+.search input[type=submit]:hover {
+    background: url(../images/search-icon-hover@2x.png);
+    background-size: cover;
+}
+
+.breadcrumb a { 
+    color:#DB005D; 
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.breadcrumb a:hover { 
+    text-decoration: underline;
 }
 
 .dropdown { 
@@ -77,10 +133,18 @@ nav {
 }
 
 #searchinput { 
-    font-size: 23px; 
+    font-size: 19px; 
     color: #6A6A6A; 
     border-radius: 50px;
     padding: 19px 40px;
+}
+
+.header { 
+    margin-top: 40px;
+}
+
+#home #searchinput { 
+    font-size: 23px; 
 }
 
 #signup { 
@@ -88,7 +152,7 @@ nav {
     border-radius: 30px;
     color: #B50038; 
     font-weight: 700; 
-    padding: 8px 20px;
+    padding: 10px 30px;
     margin-left: 10px;
 }
 
@@ -97,13 +161,23 @@ nav {
     color: #FFFFFF;
 }
 
+.see-all { 
+    text-align: right;
+    margin-top: 10px;
+}
+
 #home nav { 
     background: transparent;
 }
 
 #home header { 
-    background: url(../images/masthead-banner@2x.png);
+    background: url(../images/masthead-banner@2x.png) #000000;
     background-size: cover;
+    position: relative;
+}
+
+#home .slick-slide .stars img { 
+    display: inline-block;
 }
 
 #home #hbb,
@@ -111,25 +185,26 @@ nav {
     position:relative;
 }
 
-#home #hbb img.left-paddle,
-#home #desserts img.left-paddle { 
+#home #hbb .col,
+#home #desserts .col { 
+    margin: 0 12px;
+}
+
+#home #hbb img.scroll-left,
+#home #desserts img.scroll-left { 
     position: absolute;
     top: 40%;
     transform: translateX(-30px);
 }
 
-#home #hbb img.right-paddle,
-#home #desserts img.right-paddle { 
+#home #hbb img.scroll-right,
+#home #desserts img.scroll-right { 
     position: absolute;
     top: 40%;
     right: 0;
     transform: translateX(30px);
 }
 
-#home #hbb .row,
-#home #desserts .row { 
-    overflow: hidden;
-}
 footer { 
     background: #F2F2F2; 
 }
@@ -161,5 +236,10 @@ footer ul li a:hover {
 @media (min-width: 1200px) {
     .h1, h1 { 
         font-size: 16px; 
+    }
+
+    #home .slick-list, 
+    #home .slick-track { 
+        min-height: 305px;
     }
 }

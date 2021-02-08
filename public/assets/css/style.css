@@ -52,6 +52,7 @@ h4 {
 }
 
 /* Bootstrap Overrides */
+
 nav { 
     background: #D6006B;
 }
@@ -59,11 +60,6 @@ nav {
 .card { 
     border-radius: 0.5rem; 
     overflow: hidden;
-}
-
-.stars { 
-    margin: 5px 0; 
-    display: inline-block;
 }
 
 .navbar-dark .navbar-nav {
@@ -77,6 +73,13 @@ nav {
 .navbar-dark .navbar-toggler {
     color: #FFFFFF;
     border-color: #FFFFFF;
+}
+
+/* Global */
+
+.stars { 
+    margin: 5px 0; 
+    display: inline-block;
 }
 
 .search { 
@@ -143,9 +146,6 @@ nav {
     margin-top: 40px;
 }
 
-#home #searchinput { 
-    font-size: 23px; 
-}
 
 #signup { 
     background: #EAEAEA;
@@ -166,6 +166,8 @@ nav {
     margin-top: 10px;
 }
 
+/* Home Page */
+
 #home nav { 
     background: transparent;
 }
@@ -174,6 +176,10 @@ nav {
     background: url(../images/masthead-banner@2x.png) #000000;
     background-size: cover;
     position: relative;
+}
+
+#home #searchinput { 
+    font-size: 23px; 
 }
 
 #home .slick-slide .stars img { 
@@ -204,6 +210,50 @@ nav {
     right: 0;
     transform: translateX(30px);
 }
+
+/* Category Page  */
+
+.total-reviews {
+    font-size: 14px;
+    color: #717171;
+    margin-left: 10px;
+}
+.thumbnail { 
+    min-height: 193px;
+}
+
+.secondary-info { 
+    margin-top: 10px;
+    border-top: 1px solid #D9D9D9;
+    padding-top: 16px;
+    font-size: 14px;
+}
+
+.telephone {
+    background-image: url(../images/telephone.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 20px;
+}
+
+.ext-link {
+    background-image: url(../images/ext-link.png);
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 30px;
+    margin-left: 5px;
+    border-left: 1px solid #D9D9D9;
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.ext-link:hover {
+    text-decoration: underline;
+    color: #B50038;
+}
+
+/* Footer  */
 
 footer { 
     background: #F2F2F2; 

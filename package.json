@@ -1,9 +1,13 @@
 {
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.2",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
     "bootstrap": "^5.0.0-beta1",
+    "dotenv": "^8.2.0",
     "easy-livereload": "^1.4.3",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
     "node-dev": "^6.2.0"
   },
   "name": "restaurant-review"

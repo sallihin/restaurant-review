@@ -13,4 +13,4 @@
 
 
 ### References 
-* [Build RESTful APIs with Node.js express and MySQL | Authentication with JWT | In one Video] (https://www.youtube.com/watch?v=WfCJ3sHnLBM)
+* [Build RESTful APIs with Node.js express and MySQL | Authentication with JWT | In one Video](https://www.youtube.com/watch?v=WfCJ3sHnLBM)

@@ -4,11 +4,10 @@ const { genSaltSync, hashSync, compareSync } = require('bcrypt');
 const { sign } = require('jsonwebtoken'); // 
 const db = require('../db-connection');
 
-class UsersDB 
+class RestaurantsDB 
 { 
-    getAllUser(request, respond) { 
-        var sql = 'SELECT * FROM eatout.users';
-        
+    getAllRestaurants(request, respond) { 
+        var sql = 'SELECT * FROM eatout.restaurants';
         db.query(sql, (error, result) => {
             if (error) {
                 throw error;
@@ -89,6 +88,7 @@ class UsersDB
     }
 
     auth(request, respond) { 
+
         var sql = 'SELECT user_id, user_login, user_password, user_role FROM eatout.users WHERE user_login = ?'
         
         // Query pulls all user data from MySQL 
@@ -130,5 +130,5 @@ class UsersDB
     }
 }
 
-module.exports = UsersDB
+module.exports = RestaurantsDB
 

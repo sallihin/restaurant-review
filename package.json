@@ -10,5 +10,11 @@
     "mysql": "^2.18.1",
     "node-dev": "^6.2.0"
   },
-  "name": "restaurant-review"
+  "name": "restaurant-review",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  }
 }

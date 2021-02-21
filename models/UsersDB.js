@@ -55,8 +55,7 @@ class UsersDB
         var sql = 'UPDATE eatout.users SET ? WHERE user_id = ?';
         var userId = request.params.id;
 
-        if (request.body.user_password) 
-        { 
+        if (request.body.user_password) { 
             // Password Encryption
             const salt = genSaltSync(10);
             request.body.user_password = hashSync(request.body.user_password, salt);

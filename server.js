@@ -6,6 +6,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const routeUsers = require("./routes/routeUsers");
 const routeRestaurants = require("./routes/routeRestaurants");
+const routeReviews = require("./routes/routeReviews")
 
 var app = express();
 var host = "127.0.0.1";
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 
 routeUsers.routeUsers(app);
 routeRestaurants.routeRestaurants(app);
+routeReviews.routeReviews(app);
 
 function gotoIndex(req, res) {
     console.log(req.params);

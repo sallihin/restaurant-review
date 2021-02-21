@@ -2,7 +2,7 @@ const { verify, decode } = require('jsonwebtoken');
 
 const checkToken = (role = []) => {  
 
-    return (request, respond, next) => {
+    return (request, respond, next) => { 
 
         // Retrieve the token parameter from request body 
         let token = request.get("authorization");
@@ -27,12 +27,11 @@ const checkToken = (role = []) => {
                 } 
                 else {
 
-                    // Check if the role is correct 
+                    // Check if the user's role is allowed
                     if (role.includes(decoded.result.user_role)) { 
-                        
-                        console.log("User role verified");
 
                         // Users can only update/delete their own posts
+                        // No additional checks for admin 
                         if (decoded.result.user_role == 'user' && request.params.id != decoded.result.user_id) { 
                             respond.json({ 
                                 success: 0, 

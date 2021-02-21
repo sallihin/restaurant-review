@@ -15,7 +15,7 @@ This web application runs on Node.JS and requires the following packages.
 * nodemon 
 * useraccess 
 
-# Setting up
+## Setting up
 1. Create an .env file with the following fields
 ``` 
 DB_HOST = 

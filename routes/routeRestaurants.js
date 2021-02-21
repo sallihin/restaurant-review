@@ -15,7 +15,7 @@ const routeRestaurants = app => {
     app.route('/restaurants/:id')
         .get(restaurantsDBObject.getRestaurantById); 
         
-    app.route('/restaurants/category/:category')
+    app.route('/restaurants/cat/:category')
         .get(restaurantsDBObject.getRestaurantsByCategory);
 
     app.route('/restaurants/search/:query')  

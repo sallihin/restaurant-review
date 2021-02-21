@@ -1,13 +1,11 @@
 "use strict"
 
-const { genSaltSync, hashSync, compareSync } = require('bcrypt');
-const { sign } = require('jsonwebtoken'); // 
 const db = require('../db-connection');
 
 class RestaurantsDB 
 { 
     getAllRestaurants(request, respond) { 
-        var sql = 'SELECT * FROM eatout.restaurants';
+        var sql = 'SELECT * FROM eatout.restaurant';
         db.query(sql, (error, result) => {
             if (error) {
                 throw error;
@@ -18,8 +16,8 @@ class RestaurantsDB
         });
     }
 
-    getUserById(request, respond) { 
-        var sql = 'SELECT * FROM eatout.users WHERE user_id = ?';
+    getRestaurantById(request, respond) { 
+        var sql = 'SELECT * FROM eatout.restaurant WHERE restaurant_id = ?';
         var userId = request.params.id;
 
         db.query(sql, userId, (error, result) => {
@@ -32,36 +30,9 @@ class RestaurantsDB
         });
     }
 
-    createUser(request, respond) { 
-        // Password Encryption
-        const salt = genSaltSync(10);
-        var hashedPassword = hashSync(request.body.user_password, salt);
-        
-        var sql = 'INSERT INTO eatout.users (user_login, user_password, user_email, user_firstname, user_lastname, user_gender, user_mobile, user_address, user_photo) VALUES (?,?,?,?,?,?,?,?,?)';
-        var values = [request.body.user_login, hashedPassword, request.body.user_email, request.body.user_firstname, request.body.user_lastname, request.body.user_gender, request.body.user_mobile, request.body.user_address, request.body.user_photo];
-
-        db.query(sql, values, (error, result) => {
-            if (error) {
-                throw error;
-            }
-            else { 
-                respond.json(result);
-            }
-        });
-    }
-
-    updateUser(request, respond) { 
-        var sql = 'UPDATE eatout.users SET ? WHERE user_id = ?';
-        var userId = request.params.id;
-
-        if (request.body.user_password) 
-        { 
-            // Password Encryption
-            const salt = genSaltSync(10);
-            request.body.user_password = hashSync(request.body.user_password, salt);
-        }
-
-        var values = [request.body, userId];
+    getRestaurantsByCategory(request, respond) { 
+        var sql = 'SELECT restaurant_id, restaurant_name, restaurant_address, restaurant_telephone, restaurant_menu, restaurant_url, category_name FROM eatout.restaurant INNER JOIN eatout.restaurant_category ON eatout.restaurant.restaurant_id = eatout.restaurant_category.rc_restaurant_id INNER JOIN eatout.category ON eatout.restaurant_category.rc_category_id = eatout.category.category_id WHERE eatout.category.category_name LIKE ?';
+        var values = request.params.category;
         
         db.query(sql, values, (error, result) => {
             if (error) {
@@ -73,11 +44,14 @@ class RestaurantsDB
         });
     }
 
-    deleteUser(request, respond) { 
-        var sql = 'DELETE FROM eatout.users WHERE user_id = ?';
-        var userId = request.params.id;
+    searchRestaurantByName(request, respond) { 
+        var sql = 'SELECT restaurant_id, restaurant_name, restaurant_address, restaurant_telephone, restaurant_menu, restaurant_url, JSON_ARRAYAGG(category_name) AS categories FROM eatout.restaurant INNER JOIN eatout.restaurant_category ON eatout.restaurant.restaurant_id = eatout.restaurant_category.rc_restaurant_id INNER JOIN eatout.category ON eatout.restaurant_category.rc_category_id = eatout.category.category_id WHERE CONCAT (restaurant_name, restaurant_address) LIKE CONCAT("%",?,"%") GROUP BY restaurant_id';
 
-        db.query(sql, userId, (error, result) => {
+        
+
+        var values = request.params.query;
+        
+        db.query(sql, values, (error, result) => {
             if (error) {
                 throw error;
             }
@@ -85,49 +59,9 @@ class RestaurantsDB
                 respond.json(result);
             }
         });
-    }
+    }  
+    
 
-    auth(request, respond) { 
-
-        var sql = 'SELECT user_id, user_login, user_password, user_role FROM eatout.users WHERE user_login = ?'
-        
-        // Query pulls all user data from MySQL 
-        db.query(sql, [request.body.username], (error, result) => {
-            if (error) {
-                throw error;
-            } 
-
-            // If result is empty, the username is wrong
-            else if (result == "") {
-                respond.json({
-                    success: 0, 
-                    message: "Invalid username"
-                })
-
-            } else { 
-                // Compares request.body.password to query result
-                const isSamePassword = compareSync(request.body.password, result[0].user_password);
-
-                if (isSamePassword) {
-                    console.log(result[0])
-                    result[0].user_password = undefined
-                    const jsontoken = sign({ result: result[0] }, process.env.JSONTOKEN_KEY, { expiresIn: process.env.JSONTOKEN_EXPIRE }); 
-                    
-                    return respond.json({
-                        success: 1,
-                        message: "Login successful",
-                        token: jsontoken
-                    });
-
-                } else { 
-                    return respond.json({
-                        success: 0,
-                        data: "Invalid password"
-                    })
-                }
-            }
-        })
-    }
 }
 
 module.exports = RestaurantsDB

@@ -5,6 +5,7 @@ require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const routeUsers = require("./routes/routeUsers");
+const routeRestaurants = require("./routes/routeRestaurants");
 
 var app = express();
 var host = "127.0.0.1";
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 routeUsers.routeUsers(app);
+routeRestaurants.routeRestaurants(app);
 
 function gotoIndex(req, res) {
     console.log(req.params);

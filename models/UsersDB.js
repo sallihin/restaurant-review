@@ -38,8 +38,8 @@ class UsersDB
         const salt = genSaltSync(10);
         var hashedPassword = hashSync(request.body.user_password, salt);
         
-        var sql = 'INSERT INTO eatout.users (user_login, user_password, user_email, user_firstname, user_lastname, user_gender, user_mobile, user_address, user_photo) VALUES (?,?,?,?,?,?,?,?,?)';
-        var values = [request.body.user_login, hashedPassword, request.body.user_email, request.body.user_firstname, request.body.user_lastname, request.body.user_gender, request.body.user_mobile, request.body.user_address, request.body.user_photo];
+        var sql = 'INSERT INTO eatout.users (user_login, user_password, user_email, user_firstname, user_lastname, user_gender, user_mobile, user_address) VALUES (?,?,?,?,?,?,?,?)';
+        var values = [request.body.user_login, hashedPassword, request.body.user_email, request.body.user_firstname, request.body.user_lastname, request.body.user_gender, request.body.user_mobile, request.body.user_address];
 
         db.query(sql, values, (error, result) => {
             if (error) {

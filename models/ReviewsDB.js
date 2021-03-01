@@ -31,6 +31,36 @@ class ReviewsDB
         });
     }
 
+    getRatingsByRestaurant(request, respond) { 
+        var sql = 'SELECT review_rating FROM eatout.reviews WHERE restaurant_id = ?';
+        var userId = request.params.id;
+
+        db.query(sql, userId, (error, result) => {
+            if (error) {
+                throw error;
+            }
+            else { 
+                respond.json(result);
+            }
+        });
+    }
+
+    getReviewsByRestaurant(request, respond) { 
+        var sql = 'SELECT users.user_id, user_firstname, user_lastname, user_address, user_photo, review_rating, review_title, review_writeup, review_photo_1, review_photo_2, review_visited, review_added, review_status FROM eatout.reviews INNER JOIN eatout.users ON users.user_id = reviews.user_id INNER JOIN eatout.restaurant ON restaurant.restaurant_id = reviews.restaurant_id WHERE restaurant.restaurant_id = ?';
+        var userId = request.params.id;
+
+        db.query(sql, userId, (error, result) => {
+            if (error) {
+                throw error;
+            }
+            else { 
+                respond.json(result);
+            }
+        });
+    }
+    
+
+
     createReview(request, respond) { 
         
         var sql = 'INSERT INTO eatout.reviews (restaurant_id, user_id, review_rating, review_title, review_writeup, review_photo_1, review_photo_2, review_visited) VALUES (?,?,?,?,?,?,?,?)';

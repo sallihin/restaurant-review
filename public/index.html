@@ -19,87 +19,20 @@ Date: 31 Jan 2021
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
 		<!-- Slick Slider Library -->
-		<link type="text/css" rel="stylesheet" href="assets/css/slick.css"/> 
-		<script type="text/javascript" src="assets/js/slick.min.js"></script>
-
+		<script type="text/javascript" src="js/slick.min.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/slick.css"/> 
+		
 		<!-- Custom Styling and JS -->
-		<link type="text/css" rel="stylesheet" href="assets/css/style.css">
-		<script type="text/javascript" src="assets/js/home.js"></script>
+		<link type="text/css" rel="stylesheet" href="/css/style.css">
+		<script src="js/w3.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/global.js"></script>
+		<script src="js/home.js"></script>
 	</head>
 	
 	<body id="home">
-		<header>
-			<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark" aria-label="Eighth navbar example">
-				<div class="container">
-				<a class="navbar-brand" href="#"><img src="assets/images/eatout-logo.png" srcset="assets/images/eatout-logo@2x.png 2x"></a>
-
-			
-				<div class="" id="navigation">
-					<ul class="navbar-nav ms-auto">
-					<li class="nav-item active">
-						<a class="nav-link" aria-current="page" href="#">Log in</a>
-					</li>
-					<li class="nav-item">
-						<a id="signup" class="nav-link" href="#">Sign up</a>
-					</li>
-					</ul>
-
-				</div>
-				</div>
-			</nav> 
-			<section id="masthead" class="text-center">
-				<div class="container">
-					<div class="row py-lg-5">
-					<div class="search col-md-10 col-sm-10 mx-auto">
-						<input type="text" class="form-control" id="searchinput" aria-describedby="search" placeholder="Search">
-						<input type="submit" value="">
-						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-								Popular Category
-							</button>
-							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<li><a class="dropdown-item" href="#">Bar</a></li>
-								<li><a class="dropdown-item" href="#">Buffet</a></li>
-								<li><a class="dropdown-item" href="#">Cafe</a></li>
-								<li><a class="dropdown-item" href="#">Chinese</a></li>
-								<li><a class="dropdown-item" href="#">Dessert</a></li>
-								<li><a class="dropdown-item" href="#">Fast Food</a></li>
-								<li><a class="dropdown-item" href="#">Fusion</a></li>
-								<li><a class="dropdown-item" href="#">Halal</a></li>
-								<li><a class="dropdown-item" href="#">Indian</a></li>
-								<li><a class="dropdown-item" href="#">Italian</a></li>
-								<li><a class="dropdown-item" href="#">Japanese</a></li>
-								<li><a class="dropdown-item" href="#">Kids-friendly</a></li>
-								<li><a class="dropdown-item" href="#">Malay</a></li>
-								<li><a class="dropdown-item" href="#">Supper</a></li>
-								<li><a class="dropdown-item" href="#">Thai</a></li>
-								<li><a class="dropdown-item" href="#">Vietnamese</a></li>
-								<li><a class="dropdown-item" href="#">Western</a></li>
-							</ul>
-
-							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-							Popular Dishes
-							</button>
-							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<li><a class="dropdown-item" href="#">Bak Kut Teh</a></li>
-								<li><a class="dropdown-item" href="#">Chicken Rice</a></li>
-								<li><a class="dropdown-item" href="#">Chilli Crab</a></li>
-								<li><a class="dropdown-item" href="#">Char Kuay Teow</a></li>
-								<li><a class="dropdown-item" href="#">Fish Head Curry</a></li>
-								<li><a class="dropdown-item" href="#">Kaya Toast</a></li>
-								<li><a class="dropdown-item" href="#">Laksa</a></li>
-								<li><a class="dropdown-item" href="#">Mala</a></li>
-								<li><a class="dropdown-item" href="#">Nasi Lemak</a></li>
-								<li><a class="dropdown-item" href="#">Prawn Mee</a></li>
-								<li><a class="dropdown-item" href="#">Roti Prata</a></li>
-								<li><a class="dropdown-item" href="#">Yong Tau Foo</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</header>
+	
+	<div w3-include-html="include/header.html"></div>
 
     <main>
 		<div class="album py-5 bg-light">
@@ -108,534 +41,49 @@ Date: 31 Jan 2021
 				<h1>Best Restaurants in Singapore</h1>
 				<div class="row header">
 					<h2 class="col-10">Restaurants in Singapore</h2>
-					<span class="col-2 see-all">See all</span>
+					<span class="col-2 see-all"><a href="/restaurants.html" class="">See all</a></span>
 				</div>
 				
-				<div class="row row-cols-2 row-cols-md-4 g-4">
-
-					<div class="col">
-						<div class="card shadow-sm">
-							<img src="assets/images/rest-thumbnail.png" alt="" /> 
-
-							<div class="card-body">
-								<h4>Dancing Crab</h4>
-								<div class="stars"> 
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-								</div>
-								<div class="d-flex justify-content-between align-items-center">
-									<small class="text-muted">Seafood</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col">
-						<div class="card shadow-sm">
-							<img src="assets/images/rest-thumbnail.png" alt="" /> 
-
-							<div class="card-body">
-								<h4>Dancing Crab</h4>
-								<div class="stars"> 
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-								</div>
-								<div class="d-flex justify-content-between align-items-center">
-									<small class="text-muted">Seafood</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col">
-						<div class="card shadow-sm">
-							<img src="assets/images/rest-thumbnail.png" alt="" /> 
-
-							<div class="card-body">
-								<h4>Dancing Crab</h4>
-								<div class="stars"> 
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-								</div>
-								<div class="d-flex justify-content-between align-items-center">
-									<small class="text-muted">Seafood</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col">
-						<div class="card shadow-sm">
-							<img src="assets/images/rest-thumbnail.png" alt="" /> 
-
-							<div class="card-body">
-								<h4>Dancing Crab</h4>
-								<div class="stars"> 
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-								</div>
-								<div class="d-flex justify-content-between align-items-center">
-									<small class="text-muted">Seafood</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col">
-						<div class="card shadow-sm">
-							<img src="assets/images/rest-thumbnail.png" alt="" /> 
-
-							<div class="card-body">
-								<h4>Dancing Crab</h4>
-								<div class="stars"> 
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-								</div>
-								<div class="d-flex justify-content-between align-items-center">
-									<small class="text-muted">Seafood</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col">
-						<div class="card shadow-sm">
-							<img src="assets/images/rest-thumbnail.png" alt="" /> 
-
-							<div class="card-body">
-								<h4>Dancing Crab</h4>
-								<div class="stars"> 
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-								</div>
-								<div class="d-flex justify-content-between align-items-center">
-									<small class="text-muted">Seafood</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col">
-						<div class="card shadow-sm">
-							<img src="assets/images/rest-thumbnail.png" alt="" /> 
-
-							<div class="card-body">
-								<h4>Dancing Crab</h4>
-								<div class="stars"> 
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-								</div>
-								<div class="d-flex justify-content-between align-items-center">
-									<small class="text-muted">Seafood</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col">
-						<div class="card shadow-sm">
-							<img src="assets/images/rest-thumbnail.png" alt="" /> 
-
-							<div class="card-body">
-								<h4>Dancing Crab</h4>
-								<div class="stars"> 
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-									<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-								</div>
-								<div class="d-flex justify-content-between align-items-center">
-									<small class="text-muted">Seafood</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
+				<div id="mainRestaurantTable" class="row row-cols-2 row-cols-md-4 g-4">
+					<p>Oops. Something went wrong.</p>
+					<script>getRestaurants('','mainRestaurantTable');</script>
 				</div>
 			
 				<!-- 2nd Section : Home Based Business -->
 				<div class="row header">
-            		<h2 class="col-10">Home Based Businesses</h2>
+            		<h2 class="col-10">Fusion</h2>
             		<span class="col-2 see-all">See all</span>
           		</div>
 
-				<div id="hbb" >
-					<div class="hbb-slider row">
-						
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-								<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-								<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-								<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-								<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-								<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-								<small class="text-muted">1</small>
-							</div>
-						</div>
-						</div>
+				<div id="featured-top">
+					<div id="featured-top-listing" class="featured-top-slider row">
+						<p>Oops. Something went wrong.</p>
+						<script>getRestaurants('','featured-top-listing');</script>
 					</div>
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">2</small>
-							</div>
-						</div>
-						</div>
-					</div>
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">3</small>
-							</div>
-						</div>
-						</div>
-					</div>
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">4</small>
-							</div>
-						</div>
-						</div>
-					</div>                        
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">5</small>
-							</div>
-						</div>
-						</div>
-					</div>
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">6</small>
-							</div>
-						</div>
-						</div>
-					</div>
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">7</small>
-							</div>
-						</div>
-						</div>
-					</div>
-					
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">8</small>
-							</div>
-						</div>
-						</div>
-					</div>            
-
-					</div>
-					<img class="scroll-left" src="" srcset="assets/images/btn-left-arrow@2x.png 2x">
-					<img class="scroll-right" src="assets/images/btn-right-arrow.png" srcset="assets/images/btn-right-arrow@2x.png 2x" onclick="moveRight()">
+					<img class="scroll-left" src="" srcset="/images/btn-left-arrow@2x.png 2x">
+					<img class="scroll-right" src="/images/btn-right-arrow.png" srcset="/images/btn-right-arrow@2x.png 2x">
 				</div>
 
 				<!-- 3rd Section : Featured Desserts -->
-
 				<div class="row header">
 					<h2 class="col-10">Desserts</h2>
 					<span class="col-2 see-all">See all</span>
 				</div>
-				<div id="desserts" >
-					<div class="dessert-slider row">
-						
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">1</small>
-							</div>
-						</div>
-						</div>
+				<div id="featured-bottom" >
+					<div id="featured-bottom-listing" class="featured-bottom-slider row">
+						<p>Oops. Something went wrong.</p>
+						<script>getRestaurants('','featured-bottom-listing');</script>
 					</div>
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">2</small>
-							</div>
-						</div>
-						</div>
-					</div>
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">3</small>
-							</div>
-						</div>
-						</div>
-					</div>
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">4</small>
-							</div>
-						</div>
-						</div>
-					</div>                        
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">5</small>
-							</div>
-						</div>
-						</div>
-					</div>
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">6</small>
-							</div>
-						</div>
-						</div>
-					</div>
-
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">7</small>
-							</div>
-						</div>
-						</div>
-					</div>
-					
-					<div class="col slick-slide">
-						<div class="card shadow-sm">
-						<img src="assets/images/rest-thumbnail.png" alt="" /> 
-			
-						<div class="card-body">
-							<h4>Dancing Crab</h4>
-							<div class="stars"> 
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star_active.png" srcset="assets/images/star_active@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							<img src="assets/images/star.png" srcset="assets/images/star@2x.png 2x">
-							</div>
-							<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">8</small>
-							</div>
-						</div>
-						</div>
-					</div>            
-
-					</div>
-					<img class="scroll-left" src="" srcset="assets/images/btn-left-arrow@2x.png 2x">
-					<img class="scroll-right" src="assets/images/btn-right-arrow.png" srcset="assets/images/btn-right-arrow@2x.png 2x" onclick="moveRight()">
+					<img class="scroll-left" src="" srcset="/images/btn-left-arrow@2x.png 2x">
+					<img class="scroll-right" src="/images/btn-right-arrow.png" srcset="/images/btn-right-arrow@2x.png 2x">
 				</div>
 			</div>
 		</div>
     </main>
 
-    <footer class="text-muted py-4">
-      <div class="container">
-          <ul> 
-            <li><a href="about.html">About</a></li>
-            <li><a href="terms-of-use.html">Terms of Use</a></li>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          </ul>
-      </div>
-    </footer>
-    
+	<div w3-include-html="include/footer.html"></div>
+	<script src="js/w3.js"></script>
+    <script>includeHTML();</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   </body>
 </html>

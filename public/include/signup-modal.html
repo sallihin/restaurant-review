@@ -1,0 +1,68 @@
+<div class="modal fade" id="register" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Sign Up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="inputUsername" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="inputUsername">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="inputEmail">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="inputPassword">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputPassword2" class="form-label">Re-enter Password</label>
+                        <input type="password" class="form-control" id="inputPassword2">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputFirstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="inputFirstName">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputLastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="inputLastName">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputGender" class="form-label">Gender</label>
+                        <select class="form-select" id="inputGender" aria-label="gender">
+                            <option selected>Select One</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Unknown">I do not wish to disclose</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputMobile" class="form-label">Mobile Number</label>
+                        <input type="text" class="form-control" id="inputMobile">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputAddress" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="inputAddress">
+                    </div>
+                    <button type="button" onclick="register()" class="btn btn-primary">Register</button>
+                    
+                    <p>Already have an account? <a href="#">Log in</a></p>
+                    <p>By proceeding, you agree to our <a href="#">Terms of Use</a> and confirm you have read our <a href="#">Privacy Policy.</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,7 +5,7 @@ const db = require('../db-connection');
 class RestaurantsDB 
 { 
     getAllRestaurants(request, respond) { 
-        var sql = 'SELECT * FROM eatout.restaurant';
+        var sql = 'SELECT restaurant_id, restaurant_name, restaurant_address, restaurant_telephone, restaurant_menu, restaurant_url, restaurant_photo_1, JSON_ARRAYAGG(category_name) AS categories FROM eatout.restaurant INNER JOIN eatout.restaurant_category ON eatout.restaurant.restaurant_id = eatout.restaurant_category.rc_restaurant_id INNER JOIN eatout.category ON eatout.restaurant_category.rc_category_id = eatout.category.category_id GROUP BY restaurant_id';
         db.query(sql, (error, result) => {
             if (error) {
                 throw error;
@@ -31,7 +31,7 @@ class RestaurantsDB
     }
 
     getRestaurantsByCategory(request, respond) { 
-        var sql = 'SELECT restaurant_id, restaurant_name, restaurant_address, restaurant_telephone, restaurant_menu, restaurant_url, category_name FROM eatout.restaurant INNER JOIN eatout.restaurant_category ON eatout.restaurant.restaurant_id = eatout.restaurant_category.rc_restaurant_id INNER JOIN eatout.category ON eatout.restaurant_category.rc_category_id = eatout.category.category_id WHERE eatout.category.category_name LIKE ?';
+        var sql = 'SELECT restaurant_id, restaurant_name, restaurant_address, restaurant_telephone, restaurant_menu, restaurant_url, restaurant_photo_1, category_name FROM eatout.restaurant INNER JOIN eatout.restaurant_category ON eatout.restaurant.restaurant_id = eatout.restaurant_category.rc_restaurant_id INNER JOIN eatout.category ON eatout.restaurant_category.rc_category_id = eatout.category.category_id WHERE eatout.category.category_name LIKE ?';
         var values = request.params.category;
         
         db.query(sql, values, (error, result) => {
@@ -45,7 +45,7 @@ class RestaurantsDB
     }
 
     searchRestaurantByName(request, respond) { 
-        var sql = 'SELECT restaurant_id, restaurant_name, restaurant_address, restaurant_telephone, restaurant_menu, restaurant_url, JSON_ARRAYAGG(category_name) AS categories FROM eatout.restaurant INNER JOIN eatout.restaurant_category ON eatout.restaurant.restaurant_id = eatout.restaurant_category.rc_restaurant_id INNER JOIN eatout.category ON eatout.restaurant_category.rc_category_id = eatout.category.category_id WHERE CONCAT (restaurant_name, restaurant_address) LIKE CONCAT("%",?,"%") GROUP BY restaurant_id;';
+        var sql = 'SELECT restaurant_id, restaurant_name, restaurant_address, restaurant_telephone, restaurant_menu, restaurant_url, restaurant_photo_1, JSON_ARRAYAGG(category_name) AS categories FROM eatout.restaurant INNER JOIN eatout.restaurant_category ON eatout.restaurant.restaurant_id = eatout.restaurant_category.rc_restaurant_id INNER JOIN eatout.category ON eatout.restaurant_category.rc_category_id = eatout.category.category_id WHERE CONCAT (restaurant_name, restaurant_address, category_name) LIKE CONCAT("%",?,"%") GROUP BY restaurant_id;';
         var values = request.params.query;
         
         db.query(sql, values, (error, result) => {

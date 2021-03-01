@@ -1,0 +1,32 @@
+<div class="modal fade" id="login" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Sign In</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div id="incorrectLogin" class="alert alert-danger" role="alert">
+              Incorrect Username / Password
+            </div>
+            <div class="mb-3">
+              <label for="loginUsername" class="form-label">Username</label>
+              <input type="text" class="form-control" id="loginUsername" required>
+              <div class="invalid-feedback">Username required</div>
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="loginPassword" required>
+              <div class="invalid-feedback">Password required</div>
+            </div>
+            <button type="button" onclick="login()" class="btn btn-primary">Submit</button>
+            <p>Forgot Password?</p>
+            <p>Don't have an account yet? <a href="#">Sign up</a></p>
+            <p>By proceeding, you agree to our <a href="#">Terms of Use</a> 
+              and confirm you have read our <a href="#">Privacy Policy.</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

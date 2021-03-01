@@ -1,0 +1,61 @@
+<header>
+    <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark" aria-label="Eighth navbar example">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="/images/eatout-logo.png" srcset="/images/eatout-logo@2x.png 2x"></a>
+
+            <div class="search col-lg-5 d-none d-xl-block mx-auto">
+                <form action="restaurants.html" method="GET">
+                    <input type="text" name="query" class="form-control" id="searchinput" aria-describedby="search" placeholder="Search">
+                    <input type="submit" value="">
+                </form>
+            </div>
+
+            <div class="dropdown d-xl-block d-none ">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Popular Category</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="restaurants.html?category=bar">Bar</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=buffet">Buffet</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=cafe">Cafe</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=chinese">Chinese</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=dessert">Dessert</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=fastfood">Fast Food</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=fusion">Fusion</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=halal">Halal</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=indian">Indian</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=italian">Italian</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=japanese">Japanese</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=kids-friendly">Kids-friendly</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=malay">Malay</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=supper">Supper</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=thai">Thai</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=vietnamese">Vietnamese</a></li>
+                    <li><a class="dropdown-item" href="restaurants.html?category=western">Western</a></li>
+                </ul>
+            </div> 
+        
+            <div class="" id="navigation">
+                <ul class="navbar-nav ms-auto">
+                    <li id="loginLink" class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#login">Log in</a>
+                    </li>
+                    <li id="signUpLink" class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#register">Sign up</a>
+                    </li>
+                    <li id="userLink" class="nav-item">
+                        <div class="dropdown">
+                            <button class="btn bt xdn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Hello, User!
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Account Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Past Reviews</a></li>
+                                <li><a class="dropdown-item" onclick="logout()">Sign Out</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> 
+</header>

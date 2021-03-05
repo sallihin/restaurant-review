@@ -18,15 +18,13 @@ $(window).on("load", () => {
 const getRestaurants = (category, search) => { 
 
     let request = new XMLHttpRequest();
-    request.open('GET', restaurant_url, true);
 
     if (category) { 
-        request.open('GET', `${restaurant_url}/cat/${category}`, true);        
+        request.open('GET', `/restaurants/cat/${category}`, true);        
     } else if (search) { 
-        request.open('GET', `${search_url}/${search}`, true);
-
+        request.open('GET', `/restaurants/search/${search}`, true);
     } else { 
-        request.open('GET', restaurant_url, true);
+        request.open('GET', '/restaurants/', true);
     } 
 
     request.onload = () => { 
@@ -52,7 +50,6 @@ const displayRestaurants = () => {
         let restaurantTelephone = "";
         let restaurantMenu = "";
         let restaurantUrl = "";
-
                 
         // Dynamically fills in the images based on ratings
         let activestars = '<img src="/images/star_active.png" srcset="/images/star_active@2x.png 2x">'.repeat(restaurantRating);

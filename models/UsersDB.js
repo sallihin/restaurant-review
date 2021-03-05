@@ -88,7 +88,7 @@ class UsersDB
     }
 
     auth(request, respond) { 
-        var sql = 'SELECT user_id, user_login, user_password, user_role FROM eatout.users WHERE user_login = ?'
+        var sql = 'SELECT user_id, user_login, user_password, user_firstname, user_role FROM eatout.users WHERE user_login = ?'
         
         // Query pulls all user data from MySQL 
         db.query(sql, [request.body.username], (error, result) => {
@@ -111,10 +111,14 @@ class UsersDB
                     console.log(result[0])
                     result[0].user_password = undefined
                     const jsontoken = sign({ result: result[0] }, process.env.JSONTOKEN_KEY, { expiresIn: process.env.JSONTOKEN_EXPIRE }); 
+                    const firstname = result[0].user_firstname;
+                    const user_id = result[0].user_id;
                     
                     return respond.json({
                         success: 1,
+                        user_id: user_id,
                         message: "Login successful",
+                        name: firstname,
                         token: jsontoken
                     });
 

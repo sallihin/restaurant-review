@@ -2,6 +2,7 @@
 Created by Putra Nursallihin
 Student ID: 2082050B 
 Date: 31 Jan 2021 
+
 -------------------------------- */
 
 @font-face { 
@@ -18,6 +19,18 @@ Date: 31 Jan 2021
 
 html { 
     scroll-behavior: smooth; 
+}
+
+body {
+    height:100%; 
+    min-height: 100vh;
+    margin:0; 
+    display:flex; 
+    flex-direction:column; 
+}
+
+footer { 
+    margin-top:auto; 
 }
 
 h1, h2, h3, h4, h5, p { 
@@ -160,7 +173,7 @@ nav {
 
 
 #signUpLink > a { 
-    background: #EAEAEA;
+    background: #FFFFFF;
     border-radius: 30px;
     color: #B50038; 
     font-weight: 700; 
@@ -179,7 +192,9 @@ nav {
     display: none;
 }
 
-#incorrectLogin { 
+#incorrectLogin,
+please-fill-everything,
+#password-not-match { 
     display: none;
     text-align: center;
 }
@@ -326,7 +341,7 @@ nav {
 }
 
 #reviews #header .submit-review {
-    display: inline-block;
+
     width: 160px;
     padding: 5px;
     background: transparent linear-gradient(180deg, #D6006B 0%, #BE056F 100%) 0% 0% no-repeat padding-box;
@@ -343,11 +358,9 @@ nav {
 } 
 
 #reviews #header .a2a_dd {
-    display: inline-block;
-    /* float: right; */
-    width: 100px;
+    width: 110px;
+    height: 36px;
     padding: 5px;
-    background: #FFFFFF;
     border-radius: 5px;
     border: 1px solid #9A9A9A;
     color: #505050;
@@ -355,10 +368,19 @@ nav {
     font-weight: 600;;
     text-decoration: none; 
     text-align: center;
+    display: inline-block;
+    background: #FFFFFF url(/images/share-icon.png) no-repeat;
+    background-position: 20px center;
+    padding-left: 20px;
+}
+
+#reviews #shareicon { 
+    margin-right: 6px;
+    margin-bottom: 3px;
 }
 
 #reviews #header .a2a_dd:hover { 
-    background: #e8e8e8;
+    background-color: #e6e6e6;
 }
 
 #reviews #restaurant-details  { 
@@ -442,11 +464,11 @@ nav {
 }
 
 #reviews #individual-reviews span#name,
-#reviews #individual-reviews span#address { 
-    
+#reviews #individual-reviews span#address {     
     font-size: 12px;
     display: block;
 }
+
 
 #reviews #individual-reviews #profile-image { 
     display: block;
@@ -458,8 +480,149 @@ nav {
     font-size: 20px; 
     font-weight: 300;
     margin: 20px 0 25px;
+    font-weight: 800;
 }
 
+#reviews #insert-stars-here { 
+    display: inline-block;
+}
+
+#reviews #restaurantNameBreadcrumb {
+    padding-left: 5px;
+}
+
+#reviews #modify-reviews {
+    text-align: right;
+    margin-bottom: 5px;
+}
+
+#reviews #modify-reviews .edit-review { 
+    display: inline-block;
+    width: 90px;
+    padding: 5px;
+    background: transparent linear-gradient(180deg, #D6006B 0%, #BE056F 100%) 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+}
+
+#reviews #modify-reviews .edit-review:hover { 
+    background: transparent linear-gradient(180deg, #a70054 0%, #85044d 100%) 0% 0% no-repeat padding-box;
+}
+
+#reviews #modify-reviews .delete-review {
+    width: 100px;
+    height: 36px;
+    padding: 5px;
+    background: transparent linear-gradient(180deg, #5F5F5F 0%, #292929 100%) 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    border: 1px solid #484848;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+}
+
+#reviews #modify-reviews .delete-review:hover {
+    background: transparent linear-gradient(180deg, #323232 0%, #000000 100%) 0% 0% no-repeat padding-box;
+}
+
+#submit h1 {
+    font-size: 50px; 
+    font-weight: 600;
+    color: #2B2B2B;
+    margin-bottom: 0; 
+}
+
+#submit .btn-visit { 
+    width: 220px;
+    display: inline-block;
+    padding: 5px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid #9A9A9A;
+    color: #505050;
+    font-size: 16px; 
+    font-weight: 600;;
+    text-decoration: none; 
+    text-align: center;
+}
+
+#submit .btn-visit:hover { 
+    background: #e8e8e8;
+}
+
+#submit .rating-stars {
+    margin-right: 4px;
+    border: none;
+    float: left;
+}
+
+#submit .rating-stars > label {
+    width: 33px;
+    height: 33px;
+    margin-right: 4px;
+    color: #90A0A3;
+    float: right;
+}
+
+#submit .rating-stars > label:before {
+    margin-right: 4px;
+    background-image:url('../images/btn-rating-big-inactive@2x.png');
+    background-size: contain;
+    width: 33px;
+    height: 33px;
+    content:  "";
+    display: inline-block;
+}
+
+#submit .rating-stars > input {
+    display: none;
+}
+
+#submit .rating-stars > input:checked ~ label,
+#submit .rating-stars:not(:checked) > label:hover,
+#submit .rating-stars:not(:checked) > label:hover ~ label {
+    content: url('../images/btn-rating-big@2x.png');
+
+}
+
+#submit .rating-stars > input:checked + label:hover,
+#submit .rating-stars > input:checked ~ label:hover,
+#submit .rating-stars > label:hover ~ input:checked ~ label,
+#submit .rating-stars > input:checked ~ label:hover ~ label {
+    content: url('../images/btn-rating-big-selected@2x.png');
+}
+
+#submit .form-label {
+    font-weight: 600;
+}
+
+#submit #review_visited {
+    width: 300px;
+}
+
+#submit .btn-primary { 
+    width: 300px;
+    background: #292929;
+}
+
+#submit #community-guidelines {
+    float: right;
+    font-size: 14px;
+    color: #707070;
+    text-decoration: none;
+}
+
+#submit #community-guidelines:hover { 
+    text-decoration: underline;
+    color: #D6006B;
+}
 /* Footer  */
 
 footer { 
@@ -490,6 +653,91 @@ footer ul li a:hover {
     text-decoration: underline;
 }
 
+#success .modal-header { 
+    border-bottom: none;
+}
+
+#login .modal-header {
+    border-bottom: none;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+}
+#login .modal-body {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+#register .modal-header {
+    border-bottom: none;
+    padding: 3rem 2.5rem 0 2.5rem;
+}
+#register .modal-body {
+    padding: 2rem 3rem 0 3rem;
+}
+
+#register .modal-header h5,
+#login .modal-header h5 { 
+    font-size: 28px;
+    font-weight: 900; 
+}
+
+#register .modal-body label,
+#login .modal-body label { 
+    font-size: 14px;
+    font-weight: 800;
+}
+
+#register .modal-body button,
+#login .modal-body button { 
+    font-family: Avenir, Arial, Helvetica,sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    width: 100%;
+    background: #292929;
+    margin-bottom: 10px;
+    letter-spacing: 1px; 
+    min-height: 45px;
+}
+
+#register .modal-body button { 
+    margin-top: 20px;
+}
+
+#register .modal-body form .row {
+    margin: 0;
+}
+
+#register .modal-body button:hover,
+#login .modal-body button:hover { 
+    background: #B50038;
+    border-color: #B50038;
+}
+
+#register .modal-body .disclaimer,
+#login .modal-body .disclaimer { 
+    font-size: 12px; 
+    color:#5A5A5A;
+}
+
+#register .modal-body .disclaimer a,
+#login .modal-body .disclaimer a { 
+    font-weight: 800; 
+    text-decoration: none; 
+    color:#5A5A5A;
+}
+
+#register .modal-body .disclaimer a:hover,
+#login .modal-body .disclaimer a:hover { 
+    text-decoration: underline;
+}
+#register .modal-body .row>* {
+    padding: 0;
+}
+#register .modal-body .col-6:nth-child(odd) {
+    padding-right: 15px;
+}
+
+#register .modal-body .col-6:nth-child(even) {
+    padding-left: 15px;
+}
 @media (min-width: 1200px) {
     .h1, h1 { 
         font-size: 16px; 

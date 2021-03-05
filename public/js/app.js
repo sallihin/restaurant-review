@@ -1,4 +1,5 @@
-let restaurant_url = "/restaurants"; 
+let token = "";
+let restaurant_url = ""; 
 let search_url = "/restaurants/search"; 
 let rating_url = "reviews/ratings";
 let restaurant_arrays = [];

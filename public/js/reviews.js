@@ -1,36 +1,52 @@
 // Checks the URL for restaurant id
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const id = urlParams.get('id');
+const restaurant_id = urlParams.get('id');
+const loggedin_user_id = sessionStorage.getItem("user_id");
+const authorization = sessionStorage.getItem("token");
+let submitted = false;
 
 $(window).on("load", () => {
-    if (!id) { 
+
+    // Redirect to homepage is ID tag is missing / broken page
+    if (!restaurant_id) {
         window.location.replace('index.html');
     }
-    getRestaurants(id);
-    getAllReviews(id);
-});
 
-const getRestaurants = (id) => { 
+    // Displays submit button if logged in
+    if (token) {
+        document.getElementById('submit-review').style.display = 'inline-block';
+    } else {
+        document.getElementById('submit-review').style.display = 'none';
+    }
 
     let request = new XMLHttpRequest();
-    request.open('GET', `/restaurants/${id}`, true);        
-    request.onload = () => { 
-        restaurant_arrays = JSON.parse(request.responseText);
-        displayRestaurant();
-    }
-    request.send();
-}
+        request.open('GET', `/restaurants/${restaurant_id}`, true);
+        request.onload = () => {
+            restaurant_arrays = JSON.parse(request.responseText);
+            displayRestaurant();
+        }
+        request.send();
+    getAllReviews(restaurant_id);
 
-const displayRestaurant = () => { 
+});
+
+const displayRestaurant = () => {
     let columnContainer = document.getElementById('review-content');
-    columnContainer.innerHTML = "";
-    
+
     let restaurantId = restaurant_arrays[0].restaurant_id;
     let restaurantName = restaurant_arrays[0].restaurant_name;
     let restaurantPhoto1 = restaurant_arrays[0].restaurant_photo_1;
     let restaurantAddress = restaurant_arrays[0].restaurant_address;
-    let restaurantRating = getReviewRating(restaurantId);
+
+    let getReviews = getReviewRating(restaurantId);
+    let restaurantRating = getReviews[1];
+    let total_users = getReviews[0];
+
+    document.getElementById('restaurantName').innerHTML = restaurantName;
+    document.getElementById('restaurantNameBreadcrumb').innerHTML = restaurantName;
+    document.getElementById('total-reviews').innerHTML = `${total_users || 0} Reviews`;
+    document.getElementById('submit-review').setAttribute('href', `submit.html?id=${restaurant_id}`);
 
     let restaurantPhoto2 = "";
     let restaurantCategory = "";
@@ -43,55 +59,39 @@ const displayRestaurant = () => {
     let activestars = '<img src="/images/star_active.png" srcset="/images/star_active@2x.png 2x">'.repeat(restaurantRating);
     let inactive = '<img src="/images/star.png" srcset="/images/star@2x.png 2x">'.repeat(5 - restaurantRating);
 
+    document.getElementById('insert-stars-here').innerHTML = `${activestars}${inactive}`;
     // We omit 'categories' from result if searching by category
-    if (restaurant_arrays[0].categories) { 
+    if (restaurant_arrays[0].categories) {
         let arrayCategory = JSON.parse(restaurant_arrays[0].categories); // JSON.parse converts to JS object
         let prettyCategory = arrayCategory.join(", "); // Display as comma separated string
         restaurantCategory = prettyCategory ? prettyCategory : ""; // Ternary operator, display value if available
     }
 
-    if (restaurant_arrays[0].restaurant_photo_2) { 
+    document.getElementById('categories').innerHTML = restaurantCategory;
+
+    if (restaurant_arrays[0].restaurant_photo_2) {
         restaurantPhoto2 = `<div class="carousel-item"><img src="${restaurant_arrays[0].restaurant_photo_2}" class="d-block w-100" alt=""></div>`;
     }
 
-    if (restaurant_arrays[0].restaurant_telephone) { 
+    if (restaurant_arrays[0].restaurant_telephone) {
         restaurantTelephone = `<span class="telephone"><img src="images/telephone.png" alt=""> ${restaurant_arrays[0].restaurant_telephone}</span>`;
     }
-    
-    if (restaurant_arrays[0].restaurant_menu) { 
+
+    if (restaurant_arrays[0].restaurant_menu) {
         restaurantMenu = `<a class="ext-link" href="${restaurant_arrays[0].restaurant_menu}" target="_blank">Menu</a>`;
     }
 
-    if (restaurant_arrays[0].restaurant_url) { 
+    if (restaurant_arrays[0].restaurant_url) {
         restaurantUrl = `<a class="ext-link" href="${restaurant_arrays[0].restaurant_url}" target="_blank">Website</a>`;
     }
 
-    if (restaurant_arrays[0].restaurant_ig) { 
+    if (restaurant_arrays[0].restaurant_ig) {
         restaurantIG = `<a class="ext-link" href="${restaurant_arrays[0].restaurant_url}" target="_blank">Instagram</a>`;
     }
 
     // Uses ES6 Template Literals
-    let reviewcontent = 
-            `<div class="row row-cols-1 row-cols-lg-2 align-items-center" id="header">
-                <div class="col col-lg-8">
-                    <span class="breadcrumb"><a href="index.html">Home</a> / <a href="restaurants.html">Restaurants</a> / ${restaurantName} </span>
-                    
-                    <h1>${restaurantName}</h1>
-                    <div class="stars">
-                        ${activestars}${inactive}
-                        <span class="total-reviews">${restaurantRating || 0} Reviews</span><br>
-                        <span id="categories">${restaurantCategory}</span>
-                    </div>
-                </div>
-                <div class="col col-lg-4 text-lg-end">
-                    <a class="submit-review" href="#">Submit Review</a>
-                    <!-- AddToAny BEGIN -->
-                    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
-                    <script async src="https://static.addtoany.com/menu/page.js"></script>
-                    <!-- AddToAny END -->
-                </div>
-            </div>
-            <div class="row row-cols-1 row-cols-lg-2 " id="restaurant-details">
+    let reviewcontent =
+        `<div class="row row-cols-1 row-cols-lg-2 " id="restaurant-details">
                 <div class="col">
                     <div id="review-restaurant-photos" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -117,7 +117,7 @@ const displayRestaurant = () => {
                         <div class="col p-4 d-flex flex-column position-static">
                             <div class="row d-flex align-items-center">
                                 <h4>Restaurant Details</h4>
-                                <span class="address">71 Bussorah Street Singapore 199484</span>
+                                <span class="address">${restaurantAddress}</span>
                                 ${restaurantTelephone}
                                 ${restaurantMenu}
                                 ${restaurantUrl}
@@ -133,55 +133,55 @@ const displayRestaurant = () => {
                 </div>
             </div>`
     columnContainer.insertAdjacentHTML('beforeend', reviewcontent);
+
+
 }
 
 // This method calls the API separately and retrieves the ratings 
-const getReviewRating = (id) => { 
+const getReviewRating = (id) => {
     let rating_arrays = "";
 
     let request = new XMLHttpRequest();
-    request.open('GET', `/reviews/restaurant/${id}`, false);
-    request.onload = () => { 
-        rating_arrays = JSON.parse(request.responseText);
-    }
-    request.send();
+        request.open('GET', `/reviews/restaurant/${restaurant_id}`, false);
+        request.onload = () => {
+            rating_arrays = JSON.parse(request.responseText);
+        }
+        request.send();
 
     let totalRating = 0;
     let totalUsers = rating_arrays.length;
 
     // Sum of all individual rating
-    for (let i = 0; i < rating_arrays.length; i++){ 
-        totalRating += rating_arrays[i].review_rating; 
+    for (let i = 0; i < rating_arrays.length; i++) {
+        totalRating += rating_arrays[i].review_rating;
     }
 
     // Divide total ratings by number of user, defaults to 0
-    let averageRating = Math.floor(totalRating/totalUsers) || 0;
+    let averageRating = Math.floor(totalRating / totalUsers) || 0;
 
-    return averageRating;    
+    return [totalUsers, averageRating];
 }
 
 const getAllReviews = (id) => {
-
     let request = new XMLHttpRequest();
-    request.open('GET', `/reviews/restaurant/${id}`, false);        
-    request.onload = () => { 
-        review_arrays = JSON.parse(request.responseText);
-    }
-    request.send();
-    console.log(review_arrays)
-    
+        request.open('GET', `/reviews/restaurant/${id}`, false);
+        request.onload = () => {
+            review_arrays = JSON.parse(request.responseText);
+        }
+        request.send();
+        console.log(review_arrays)
+
     let individualReviews = document.getElementById('individual-reviews');
-    
+
     // Displays the Review title if there is 1 or more reviews
-    if (review_arrays[0].review_writeup != null) { 
+    if (review_arrays[0] != undefined ) {
         let reviewTitle = `<div class="row row-cols-1"><div class="col"><h3>Reviews</h3></div></div>`;
         individualReviews.insertAdjacentHTML('beforeend', reviewTitle);
-        
-    }    
+    }
 
     for (let i = 0; i < review_arrays.length; i++) {
-        
-
+        let review_id = review_arrays[i].review_id;
+        let reviewUserId = review_arrays[i].user_id;
         let profileImage = review_arrays[i].user_photo;
         let firstName = review_arrays[i].user_firstname;
         let lastName = review_arrays[i].user_lastname;
@@ -190,18 +190,26 @@ const getAllReviews = (id) => {
         let title = review_arrays[i].review_title;
         let reviewWriting = review_arrays[i].review_writeup;
 
-        const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+        // Dates formatting
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         let visited = new Date(review_arrays[i].review_visited);
         let visitedFormatted = visited.getDate() + " " + monthNames[visited.getMonth()] + " " + visited.getFullYear();
+        let VisitedSendParam = visited.getFullYear() + "-" + ("0" + (visited.getMonth() + 1)).slice(-2)+ "-" + ("0" + visited.getDate()).slice(-2);
         let reviewAdded = new Date(review_arrays[i].review_added);
         let reviewAddedFormatted = reviewAdded.getDate() + " " + monthNames[reviewAdded.getMonth()] + " " + reviewAdded.getFullYear();
+        let isThisMyReview = "";
+
+        if (reviewUserId == loggedin_user_id) {
+            document.getElementById('submit-review').style.display = 'none';
+            isThisMyReview = `<div id="modify-reviews"><a id="edit-review" class="edit-review" href="submit.html?id=${restaurant_id}&edit=true&rating=${rating}&title=${title}&date=${VisitedSendParam}&review=${reviewWriting}" style="display: inline-block;">Edit</a> <a id="delete-review" class="delete-review" onclick="deleteReview(${review_id},${loggedin_user_id})" style="display: inline-block;">Delete</a></div>`
+        }
 
         // Dynamically fills in the images based on ratings
         let activestars = '<img src="/images/star_active.png" srcset="/images/star_active@2x.png 2x">'.repeat(rating);
         let inactive = '<img src="/images/star.png" srcset="/images/star@2x.png 2x">'.repeat(5 - rating);
 
-        let reviewcontent = 
-                `<div class="col">
+        let reviewcontent =
+            `<div class="col">
                     <div
                         class="card row g-0 border overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col-12 col-lg-2 p-4 flex-column position-static">
@@ -216,13 +224,33 @@ const getAllReviews = (id) => {
                             </div>
                             <h4>${title}</h4>
                             <p>${reviewWriting}</p>
-                            <p><b>Date visted:</b> ${visitedFormatted}</p>
+                            <p><b>Date visited:</b> ${visitedFormatted}</p>
+                            ${isThisMyReview}
                         </div>
 
                     </div>
                 </div>`
-                individualReviews.insertAdjacentHTML('beforeend', reviewcontent);
+        individualReviews.insertAdjacentHTML('beforeend', reviewcontent);
     }
+}
 
-    
+// Delete review function
+const deleteReview = (review_id, user_id) => {
+    var response = confirm("Are you sure you want to delete this comment?");
+    if (response == true) {
+        let payload = {
+            review_id: review_id
+        }
+        
+        var deleteReview = new XMLHttpRequest();
+            deleteReview.open("DELETE", `/reviews/${user_id}`, true);
+            deleteReview.setRequestHeader('Content-Type', "application/json");
+            deleteReview.setRequestHeader('Authorization', 'Bearer ' + authorization);
+            deleteReview.onload = () => {
+                location.reload();
+                console.log(deleteReview.response);
+            }
+            deleteReview.send(JSON.stringify(payload));
+            
+    }
 }

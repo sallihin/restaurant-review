@@ -3,10 +3,9 @@ const getRestaurants = (category, container) => {
     let request = new XMLHttpRequest();
 
     if (category == "") { 
-        request.open('GET', restaurant_url, true);
+        request.open('GET', '/restaurants', true);
     } else { 
-        request.open('GET', `${restaurant_url}/cat/${category}`, true);
-        console.log(`${restaurant_url}/cat/${category}`);
+        request.open('GET', `/restaurants/cat/${category}`, true);
     }
 
     request.onload = () => { 

@@ -19,6 +19,7 @@ const getRestaurants = (category, search) => {
 
     let request = new XMLHttpRequest();
 
+    // Runs different query depending on the parameters in the URL
     if (category) { 
         request.open('GET', `/restaurants/cat/${category}`, true);        
     } else if (search) { 
@@ -36,10 +37,11 @@ const getRestaurants = (category, search) => {
 
 const displayRestaurants = () => { 
 
+    // Prepares the container for content insertion
     let columnContainer = document.getElementById('restaurant-listing');
     columnContainer.innerHTML = "";
     
-    for (let i = 0; i < restaurant_arrays.length && i < 8; i++) {
+    for (let i = 0; i < restaurant_arrays.length; i++) {
         let restaurantId = restaurant_arrays[i].restaurant_id;
         let restaurantName = restaurant_arrays[i].restaurant_name;
         let restaurantPhoto = restaurant_arrays[i].restaurant_photo_1;

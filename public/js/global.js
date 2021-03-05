@@ -4,9 +4,8 @@ $(window).on("load", () => {
     // Retrieves token from session storage
     token = sessionStorage.getItem("token");
     let name = sessionStorage.getItem("name");
-    let user_id = sessionStorage.getItem("user_id");
 
-    // If token is available, display logout menu
+    // If token is available, display name and logout menu
     if (token) {
         document.getElementById('loginLink').style.display = 'none';
         document.getElementById('signUpLink').style.display = 'none';
@@ -21,10 +20,9 @@ $(window).on("load", () => {
 
 const register = () => {
 
-    // Reset error message
+    // Reset form error message
     document.getElementById('please-fill-everything').style.display = 'none';
     document.getElementById('password-not-match').style.display = 'none';
-
 
     let inputUsername = document.getElementById('inputUsername').value;
     let inputEmail = document.getElementById('inputEmail').value;
@@ -48,10 +46,18 @@ const register = () => {
     }
 
     if (!inputUsername || !inputEmail || !inputPassword || !inputPassword2 || !inputFirstName || !inputLastName || !inputGender || !inputMobile || !inputAddress) { 
+        
+        // Simple form validation to check if all fields are filled
         document.getElementById('please-fill-everything').style.display = 'block';
+
     } else if (inputPassword != inputPassword2) { 
+        
+        // Check if both password fields have similar values
         document.getElementById('password-not-match').style.display = 'block';
+
     } else { 
+
+        // Execute XHR after form validation
         let registerUser = new XMLHttpRequest();
             registerUser.open('POST', '/users/register', true);
             registerUser.setRequestHeader('Content-Type', "application/json");
@@ -69,6 +75,7 @@ const login = () => {
     // Reset error message 
     document.getElementById('incorrectLogin').style.display = 'none';
 
+    // Connects to XHR before validation
     let userLogin = new XMLHttpRequest();
         userLogin.open('POST', '/login', true);
         userLogin.setRequestHeader('Content-Type', "application/json");
@@ -103,15 +110,18 @@ const login = () => {
 }
 
 const logout = () => {
+
+    // Reset UI to logged out state
     document.getElementById('loginLink').style.display = 'block';
     document.getElementById('signUpLink').style.display = 'block';
     document.getElementById('userLink').style.display = 'none';
+
+    // Removes session storage stored in browser
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user_id');
     sessionStorage.removeItem('name');
-    if (window.location.pathname == '/reviews.html') {
-        document.getElementById('submit-review').style.display = 'none';
-    }
+
+    // If current page is review page, force reload page to reset state
     if (window.location.pathname == '/reviews.html') {
         location.reload();
     }

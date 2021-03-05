@@ -17,7 +17,7 @@ class RestaurantsDB
     }
 
     getRestaurantById(request, respond) { 
-        var sql = 'SELECT * FROM eatout.restaurant WHERE restaurant_id = ?';
+        var sql = 'SELECT restaurant_name, restaurant_address, restaurant_telephone, restaurant_menu, restaurant_url, restaurant_photo_1, JSON_ARRAYAGG(category_name) AS categories FROM eatout.restaurant INNER JOIN eatout.restaurant_category ON eatout.restaurant.restaurant_id = eatout.restaurant_category.rc_restaurant_id INNER JOIN eatout.category ON eatout.restaurant_category.rc_category_id = eatout.category.category_id WHERE restaurant_id = ?';
         var userId = request.params.id;
 
         db.query(sql, userId, (error, result) => {

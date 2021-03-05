@@ -3,7 +3,9 @@ const getRestaurants = (category, container) => {
     let request = new XMLHttpRequest();
 
     if (category == "") { 
+        // If no parameter is provided, display all listings
         request.open('GET', '/restaurants', true);
+
     } else { 
         request.open('GET', `/restaurants/cat/${category}`, true);
     }
@@ -18,12 +20,12 @@ const getRestaurants = (category, container) => {
 
 const displayRestaurants = container => { 
 
+    // Prepares the container to insert content 
     let columnContainer = document.getElementById(container);
     columnContainer.innerHTML = "";
     
     for (let i = 0; i < restaurant_arrays.length && i < 8; i++) {
 
-        // console.log(this);
         let restaurantId = restaurant_arrays[i].restaurant_id;
         let restaurantName = restaurant_arrays[i].restaurant_name;
         let restaurantPhoto = restaurant_arrays[i].restaurant_photo_1;
@@ -34,7 +36,7 @@ const displayRestaurants = container => {
         let activestars = '<img src="/images/star_active.png" srcset="/images/star_active@2x.png 2x">'.repeat(restaurantRating);
         let inactive = '<img src="/images/star.png" srcset="/images/star@2x.png 2x">'.repeat(5 - restaurantRating);
 
-        // We omit 'categories' from result if searching by category
+        // We omit 'categories' from result if searching by category because the SQL query will not return other categories
         if (restaurant_arrays[i].categories) { 
             let arrayCategory = JSON.parse(restaurant_arrays[i].categories); // JSON.parse converts to JS object
             let prettyCategory = arrayCategory.join(", "); // Display as comma separated string
@@ -64,16 +66,16 @@ const displayRestaurants = container => {
     }
 }
 
-// This method calls the API separately and retrieves the ratings 
+// This method calls the API separately and retrieves the ratings
 const getReviewRating = (id) => { 
     let rating_arrays = "";
 
     let request = new XMLHttpRequest();
-    request.open('GET', `${rating_url}/${id}`, false);
-    request.onreadystatechange = () => { 
-        rating_arrays = JSON.parse(request.responseText);
-    }
-    request.send();
+        request.open('GET', `${rating_url}/${id}`, false);
+        request.onreadystatechange = () => { 
+            rating_arrays = JSON.parse(request.responseText);
+        }
+        request.send();
 
     let totalRating = 0;
     let totalUsers = rating_arrays.length;
@@ -89,6 +91,7 @@ const getReviewRating = (id) => {
     return averageRating;    
 }
 
+// Prepare slick slider library for Buffet and Cafe slider
 $(window).on("load", () => {
 
     $('.featured-top-slider').slick({

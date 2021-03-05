@@ -51,14 +51,15 @@ Date: 31 Jan 2021
 			
 				<!-- 2nd Section : Home Based Business -->
 				<div class="row header">
-            		<h2 class="col-10">Fusion</h2>
-            		<span class="col-2 see-all">See all</span>
+            		<h2 class="col-10">Buffet</h2>
+            		<span class="col-2 see-all"><a href="restaurants.html?category=buffet">See all</a></span>
           		</div>
 
 				<div id="featured-top">
 					<div id="featured-top-listing" class="featured-top-slider row">
 						<p>Oops. Something went wrong.</p>
-						<script>getRestaurants('fusion','featured-top-listing');</script>
+						<!-- Delayed execution to allow elements to load -->
+						<script>setTimeout(getRestaurants('buffet','featured-top-listing'), 500);</script>
 					</div>
 					<img class="scroll-left" src="" srcset="/images/btn-left-arrow@2x.png 2x">
 					<img class="scroll-right" src="/images/btn-right-arrow.png" srcset="/images/btn-right-arrow@2x.png 2x">
@@ -66,13 +67,14 @@ Date: 31 Jan 2021
 
 				<!-- 3rd Section : Featured Desserts -->
 				<div class="row header">
-					<h2 class="col-10">Desserts</h2>
-					<span class="col-2 see-all"><a href="/restaurants.html?category=desserts">See all</a></span>
+					<h2 class="col-10">Cafe</h2>
+					<span class="col-2 see-all"><a href="restaurants.html?category=cafe">See all</a></span>
 				</div>
 				<div id="featured-bottom" >
 					<div id="featured-bottom-listing" class="featured-bottom-slider row">
 						<p>Oops. Something went wrong.</p>
-						<script>getRestaurants('desserts','featured-bottom-listing');</script>
+						<!-- Delayed execution to allow elements to load -->
+						<script>setTimeout(getRestaurants('cafe','featured-bottom-listing'), 500);</script>
 					</div>
 					<img class="scroll-left" src="" srcset="/images/btn-left-arrow@2x.png 2x">
 					<img class="scroll-right" src="/images/btn-right-arrow.png" srcset="/images/btn-right-arrow@2x.png 2x">
@@ -84,7 +86,6 @@ Date: 31 Jan 2021
 	<div w3-include-html="include/footer.html"></div>
 	<script src="js/w3.js"></script>
 	
-
     <script>includeHTML();</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   </body>

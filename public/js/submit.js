@@ -13,11 +13,13 @@ let restaurantName = "";
 
 $(window).on("load", () => {
     if (!restaurant_id || !token) {
-        alert("Invalid user/id. Redirect to homepage.");
-        window.location.replace(`reviews.html?id=${restaurant_id}`);
+        alert("Invalid request. Redirect to homepage.");
+        window.location.replace(`index.html`);
     }
 
     if (isEditReview) {
+
+        // Prefills the field if this is an edit request
         if (editRating == 5) { 
             document.getElementById("star5").checked = true;
         } else if (editRating == 4) { 
@@ -41,7 +43,6 @@ const getRestaurants = () => {
         request.onload = () => {
             restaurant_arrays = JSON.parse(request.responseText);
             restaurant_name = restaurant_arrays[0].restaurant_name;
-            // console.log(restaurant_arrays);
             displayRestaurant();
         }
         request.send();
@@ -67,6 +68,7 @@ const submitReview = () => {
     // Reset error message
     document.getElementById('error-message').style.display = 'none';
    
+    // Fetch all form values 
     let review_rating = 0;
     if (document.getElementById('star1').checked) { 
         review_rating = 1;
@@ -87,8 +89,12 @@ const submitReview = () => {
     let review_photo_2 = "";
 
     if (!review_title || !review_writeup || !review_visited) { 
+        
+        // Simple form validation
         document.getElementById('error-message').style.display = 'block';
+
     } else { 
+
         let payload = {
             restaurant_id: restaurant_id,
             review_rating: review_rating,
@@ -99,6 +105,7 @@ const submitReview = () => {
             review_visited: review_visited
         }
         let submitXHR = new XMLHttpRequest();
+            // Execute a different open request depending on new or existing review
             if (isEditReview) { 
                 submitXHR.open('PUT', `/reviews/${user_id}`, true);
             } else { 

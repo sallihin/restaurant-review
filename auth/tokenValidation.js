@@ -1,3 +1,5 @@
+// This middleware allows the function to check if the user has valid permissions prior to running the desired action
+
 const { verify, decode } = require('jsonwebtoken');
 
 const checkToken = (role = []) => {  

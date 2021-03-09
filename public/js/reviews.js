@@ -8,7 +8,7 @@ let submitted = false;
 
 $(window).on("load", () => {
 
-    // Redirect to homepage is ID tag is missing / broken page
+    // Redirect to homepage if ID tag is missing / broken page
     if (!restaurant_id) {
         window.location.replace('index.html');
     }

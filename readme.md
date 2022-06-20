@@ -56,4 +56,4 @@ This web application runs on Node.JS and requires the following packages.
 
 
 ## License 
-[Mit License © 2021-2021 Putra Nursallihin](https://putra-nursallihin.mit-license.org/2021)
+[Mit License © 2021-2022 Putra Nursallihin](https://putra-nursallihin.mit-license.org/2021)

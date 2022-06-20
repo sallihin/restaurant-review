@@ -728,9 +728,7 @@ footer ul li a:hover {
 #login .modal-body .disclaimer a:hover { 
     text-decoration: underline;
 }
-#register .modal-body .row>* {
-    padding: 0;
-}
+
 #register .modal-body .col-6:nth-child(odd) {
     padding-right: 15px;
 }

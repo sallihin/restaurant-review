@@ -11,6 +11,7 @@ $(window).on("load", () => {
     } else if (search) { 
         document.getElementsByClassName('breadcrumb')[0].innerHTML = `<a href="index.html">Home</a> /  Search Results for '${search}'`;
         document.getElementsByClassName('header')[0].innerHTML = `<h2>${search}</h2>`;
+        document.getElementById('searchinput').setAttribute('placeholder',search);
     }
     getRestaurants(category, search);
 });

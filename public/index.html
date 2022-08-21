@@ -17,16 +17,13 @@ Date: 31 Jan 2021
 
 		<!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
-		<!-- Slick Slider Library -->
-		<script type="text/javascript" src="js/slick.min.js"></script>
-		<link type="text/css" rel="stylesheet" href="css/slick.css"/> 
-		
+	
 		<!-- Custom Styling and JS -->
 		<link type="text/css" rel="stylesheet" href="/css/style.css">
-		<script src="js/app.js"></script>
-		<script src="js/global.js"></script>
 		<script src="js/home.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/global.js"></script>  
+
 
 	</head>
 	
@@ -49,7 +46,7 @@ Date: 31 Jan 2021
 					<script>getRestaurants('','mainRestaurantTable');</script>
 				</div>
 			
-				<!-- 2nd Section : Home Based Business -->
+				<!-- 2nd Section : Buffet -->
 				<div class="row header">
             		<h2 class="col-10">Buffet</h2>
             		<span class="col-2 see-all"><a href="restaurants.html?category=buffet">See all</a></span>
@@ -59,7 +56,7 @@ Date: 31 Jan 2021
 					<div id="featured-top-listing" class="featured-top-slider row">
 						<p>Oops. Something went wrong.</p>
 						<!-- Delayed execution to allow elements to load -->
-						<script>setTimeout(getRestaurants('buffet','featured-top-listing'), 500);</script>
+						<script>getRestaurants('buffet','featured-top-listing');</script>
 					</div>
 					<img class="scroll-left" src="" srcset="/images/btn-left-arrow@2x.png 2x">
 					<img class="scroll-right" src="/images/btn-right-arrow.png" srcset="/images/btn-right-arrow@2x.png 2x">
@@ -74,7 +71,7 @@ Date: 31 Jan 2021
 					<div id="featured-bottom-listing" class="featured-bottom-slider row">
 						<p>Oops. Something went wrong.</p>
 						<!-- Delayed execution to allow elements to load -->
-						<script>setTimeout(getRestaurants('cafe','featured-bottom-listing'), 500);</script>
+						<script>getRestaurants('cafe','featured-bottom-listing');</script>
 					</div>
 					<img class="scroll-left" src="" srcset="/images/btn-left-arrow@2x.png 2x">
 					<img class="scroll-right" src="/images/btn-right-arrow.png" srcset="/images/btn-right-arrow@2x.png 2x">
@@ -88,5 +85,10 @@ Date: 31 Jan 2021
 	
     <script>includeHTML();</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+	<!-- Slick Slider Library -->
+	<script type="text/javascript" src="js/slick.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
   </body>
+
 </html>

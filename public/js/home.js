@@ -4,10 +4,10 @@ const getRestaurants = (category, container) => {
 
     if (category == "") { 
         // If no parameter is provided, display all listings
-        request.open('GET', '/restaurants', true);
+        request.open('GET', `${apiPath}/restaurants`, true);
 
     } else { 
-        request.open('GET', `/restaurants/cat/${category}`, true);
+        request.open('GET', `${apiPath}/restaurants/cat/${category}`, true);
     }
 
     request.onload = () => { 
@@ -33,8 +33,8 @@ const displayRestaurants = container => {
         let restaurantCategory = "";
         
         // Dynamically fills in the images based on ratings
-        let activestars = '<img src="/images/star_active.png" srcset="/images/star_active@2x.png 2x">'.repeat(restaurantRating);
-        let inactive = '<img src="/images/star.png" srcset="/images/star@2x.png 2x">'.repeat(5 - restaurantRating);
+        let activestars = '<img src="/images/star_active.png" srcset="/images/star_active@2x.png 2x" width="19px" height="20px">'.repeat(restaurantRating);
+        let inactive = '<img src="/images/star.png" srcset="/images/star@2x.png 2x" width="19px" height="20px">'.repeat(5 - restaurantRating);
 
         // We omit 'categories' from result if searching by category because the SQL query will not return other categories
         if (restaurant_arrays[i].categories) { 

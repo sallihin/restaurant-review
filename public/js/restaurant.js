@@ -4,14 +4,14 @@ const urlParams = new URLSearchParams(queryString);
 const category = urlParams.get('category');
 const search = urlParams.get('query');
 
-$(window).on("load", () => {
+$(document).ready(function() {
     if (category) { 
         document.getElementsByClassName('breadcrumb')[0].innerHTML = `<a href="index.html">Home</a> /  ${category}`;
         document.getElementsByClassName('header')[0].innerHTML = `<h2>${category}</h2>`;
     } else if (search) { 
         document.getElementsByClassName('breadcrumb')[0].innerHTML = `<a href="index.html">Home</a> /  Search Results for '${search}'`;
         document.getElementsByClassName('header')[0].innerHTML = `<h2>${search}</h2>`;
-        document.getElementById('searchinput').setAttribute('placeholder',search);
+        document.getElementById('searchinput').setAttribute('placeholder', search);
     }
     getRestaurants(category, search);
 });
@@ -22,11 +22,12 @@ const getRestaurants = (category, search) => {
 
     // Runs different query depending on the parameters in the URL
     if (category) { 
-        request.open('GET', `/restaurants/cat/${category}`, true);        
+        request.open('GET', `${apiPath}/restaurants/cat/${category}`, true);        
     } else if (search) { 
-        request.open('GET', `/restaurants/search/${search}`, true);
+        request.open('GET', `${apiPath}/restaurants/search/${search}`, true);
+        console.log("It's running")
     } else { 
-        request.open('GET', '/restaurants/', true);
+        request.open('GET', `${apiPath}/restaurants/`, true);
     } 
 
     request.onload = () => { 
@@ -55,8 +56,8 @@ const displayRestaurants = () => {
         let restaurantUrl = "";
                 
         // Dynamically fills in the images based on ratings
-        let activestars = '<img src="/images/star_active.png" srcset="/images/star_active@2x.png 2x">'.repeat(restaurantRating);
-        let inactive = '<img src="/images/star.png" srcset="/images/star@2x.png 2x">'.repeat(5 - restaurantRating);
+        let activestars = '<img src="/images/star_active.png" srcset="/images/star_active@2x.png 2x" width="19px" height="20px">'.repeat(restaurantRating);
+        let inactive = '<img src="/images/star.png" srcset="/images/star@2x.png 2x" width="19px" height="20px">'.repeat(5 - restaurantRating);
 
         // We omit 'categories' from result if searching by category
         if (restaurant_arrays[i].categories) { 

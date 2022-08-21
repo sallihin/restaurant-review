@@ -21,7 +21,7 @@ $(window).on("load", () => {
     }
 
     let request = new XMLHttpRequest();
-        request.open('GET', `/restaurants/${restaurant_id}`, true);
+        request.open('GET', apiPath + '/restaurants/' + restaurant_id, true);
         request.onload = () => {
             restaurant_arrays = JSON.parse(request.responseText);
             displayRestaurant();
@@ -189,6 +189,7 @@ const getAllReviews = (id) => {
         let rating = review_arrays[i].review_rating;
         let title = review_arrays[i].review_title;
         let reviewWriting = review_arrays[i].review_writeup;
+        let reviewSentiment = review_arrays[i].review_sentiment;
 
         // Dates formatting
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -198,10 +199,15 @@ const getAllReviews = (id) => {
         let reviewAdded = new Date(review_arrays[i].review_added);
         let reviewAddedFormatted = reviewAdded.getDate() + " " + monthNames[reviewAdded.getMonth()] + " " + reviewAdded.getFullYear();
         let isThisMyReview = "";
+        let sentimentBox = "";
 
         if (reviewUserId == loggedin_user_id) {
             document.getElementById('submit-review').style.display = 'none';
             isThisMyReview = `<div id="modify-reviews"><a id="edit-review" class="edit-review" href="submit.html?id=${restaurant_id}&edit=true&rating=${rating}&title=${title}&date=${VisitedSendParam}&review=${reviewWriting}" style="display: inline-block;">Edit</a> <a id="delete-review" class="delete-review" onclick="deleteReview(${review_id},${loggedin_user_id})" style="display: inline-block;">Delete</a></div>`
+        }
+
+        if (reviewSentiment) { 
+            sentimentBox = `<p><b>Sentiment Analysis:</b> ${reviewSentiment}</p>`;
         }
 
         // Dynamically fills in the images based on ratings
@@ -225,6 +231,7 @@ const getAllReviews = (id) => {
                             <h4>${title}</h4>
                             <p>${reviewWriting}</p>
                             <p><b>Date visited:</b> ${visitedFormatted}</p>
+                            ${sentimentBox}
                             ${isThisMyReview}
                         </div>
 

@@ -73,6 +73,10 @@ nav {
     overflow: hidden;
 }
 
+.card > img {
+    width: 100%;
+}
+
 .navbar-dark .navbar-nav {
     flex-direction: row;
 }
@@ -184,7 +188,7 @@ nav {
 
 #signUpLink > a:hover { 
     background: #B50038; 
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 #loginLink,
 #signUpLink,
@@ -315,7 +319,7 @@ please-fill-everything,
 
 /* Reviews Page */
 #reviews {
-    background: linear-gradient(180deg, #FFFFFF 400px, #F2F2F2 400px);
+    background: linear-gradient(180deg, #FFFFFF 450px, #F2F2F2 400px);
 }
 #reviews h1 { 
     font-size: 60px; 
@@ -753,3 +757,38 @@ footer ul li a:hover {
         font-size: 40px;
     }
 }
+
+@media (max-width: 767px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item-end.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(25%);
+    }
+    
+    .carousel-inner .carousel-item-start.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-25%);
+    }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+  transform: translateX(0);
+}
+

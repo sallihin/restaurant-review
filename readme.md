@@ -1,4 +1,3 @@
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://putra-nursallihin.mit-license.org/2021)
 [![npm version](https://badge.fury.io/js/angular2-expandable-list.svg)](https://badge.fury.io/js/angular2-expandable-list)
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
